@@ -1,0 +1,20 @@
+{
+  "name": "Technical Assessment",
+  "version": "1.0.0",
+  "description": "Another Technical Assessment",
+  "author": "Leonardo Faria",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-shell": "^0.5.2",
+    "gulp-util": "^3.0.7",
+    "push-dir": "^0.2.2",
+    "rsyncwrapper": "^2.0.1",
+    "yargs": "^6.3.0"
+  }
+}

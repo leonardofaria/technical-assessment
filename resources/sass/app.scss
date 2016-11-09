@@ -1,0 +1,304 @@
+@import "normalize";
+@import "grid";
+@import "util";
+
+/* HTML */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #efefef;
+  font-family: Arial;
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-weight: normal;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+table.table {
+  width: 100%;
+
+  tr:nth-child(odd) {
+    background: #efefef;
+  }
+
+  td {
+    padding: 5px;
+  }
+}
+
+/* BASIC REUSABLE LAYOUT COMPONENTS */
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @media (min-width: 768px) {
+    width: 750px;
+  }
+
+  @media (min-width: 992px) {
+    width: 970px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 1170px;
+  }
+}
+
+.modal-dialog {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  z-index: 99;
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    padding: 15px;
+  }
+
+  &:target, &.active {
+    display: block;
+    display: flex;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    z-index: 100 !important;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .background {
+    background: rgba(0, 0, 0, 0.45);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+  }
+
+  .content {
+    background: #fafafa;
+    font-size: 0.875rem;
+    margin: 15px;
+    overflow-y: scroll;
+    padding: 15px;
+    position: relative;
+
+    @media (min-width: 768px) {
+      width: 720px;
+      margin: 0 auto;
+      padding: 15px 15px 0;
+    }
+
+    .close {
+      color: #000;
+      font-size: 1rem;
+      font-weight: bold;
+      position: absolute;
+      right: 10px;
+      top: 5px;
+    }
+
+    .info {
+      @extend .clearfix;
+
+      h1, h2 {
+        margin: 0;
+      }
+
+      h1 {
+        font-size: 2.25rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      img {
+        float: left;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.site-wrap {
+  background: #fff;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.35);
+  min-height: 100vh;
+}
+
+header {
+  margin-bottom: 15px;
+
+  .top-bar {
+    background: #000;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0 -15px;
+    text-align: right;
+
+    a, a:visited {
+      color: #fff;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+      @include image-replace('img/logo.png', 460px, 115px);
+    }
+
+    nav {
+      ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+          display: inline-block;
+          margin: 0;
+          padding: 0;
+
+          a {
+            color: #000;
+            display: block;
+            font-size: 0.875rem;
+            font-weight: bold;
+            padding: 5px;
+            text-transform: uppercase;
+          }
+
+          &.active, &:hover {
+            background-image: -moz-linear-gradient( 90deg, rgb(165,17,31) 0%, rgb(227,38,55) 100%);
+            background-image: -webkit-linear-gradient( 90deg, rgb(165,17,31) 0%, rgb(227,38,55) 100%);
+            background-image: -ms-linear-gradient( 90deg, rgb(165,17,31) 0%, rgb(227,38,55) 100%);
+            border-radius: 3px;
+
+            a {
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+main {
+  .bio {
+    font-size: 0.875rem;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  h2.title {
+    margin: 0 0 35px 0;
+    text-transform: uppercase;
+
+    /* I usually use icon fonts for this */
+    &.icon {
+      background-repeat: no-repeat;
+      background-position: center left;
+      padding-left: 30px;
+    }
+
+    &.icon-gun {
+      background-image: url('img/icon-gun.png');
+    }
+
+    &.icon-target {
+      background-image: url('img/icon-target.png');
+    }
+  }
+
+  .table-mission-history {
+    td {
+      font-size: 0.875rem;
+      padding: 10px;
+
+      .name {
+        font-size: 1.125rem;
+      }
+    }
+  }
+
+  .extreme { color: #ef662f; }
+  .deadly { color: #ff0000; }
+  .low { color: #3fb34f; }
+  .moderate { color: #00afec; }
+  .high { color: #ff0000; }
+
+  .pagination {
+    font-size: 0.875rem;
+    margin: 25px auto;
+    text-align: center;
+
+    a, a:visited {
+      color: #000;
+      text-decoration: underline;
+    }
+  }
+
+  .tool {
+    @extend .clearfix;
+    font-size: 0.75rem;
+    margin-bottom: 15px;
+
+    img {
+      float: left;
+      margin-right: 10px;
+    }
+
+    h3 {
+      font-size: 1.125rem;
+      margin: 0;
+    }
+
+    h3 + p {
+      margin-top: 0;
+    }
+
+    a, a:visited {
+      color: #000;
+      margin-top: 10px;
+      text-decoration: underline;
+    }
+  }
+}
